@@ -16,9 +16,6 @@ def ping(message: str) -> str:
 # 3) Expose the MCP server over SSE at /sse
 app = Starlette(
     routes=[
-        Mount("/sse", app=mcp.sse_app("/sse")),
+        Mount("/sse", app=mcp.sse_app()),
     ]
 )
-
-if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
